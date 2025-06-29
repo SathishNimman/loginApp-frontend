@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+const API_URL = import.meta.env.VITE_API_URL;
 
 function LoginForm() {
   const [formType, setFormType] = useState("login");
@@ -8,14 +9,11 @@ function LoginForm() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [message, setMessage] = useState("");
-
   const isFormValid = email.trim() !== "" && password.trim() !== "" &&
     (formType === "login" || (firstName.trim() !== "" && lastName.trim() !== ""));
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const url = `${process.env.NEXT_PUBLIC_API_URL}/api/${formType}`;
-
+    const url = `${API_URL}/api/${formType}`;
     try {
       const payload = formType === "login"
         ? { email, password }
