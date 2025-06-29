@@ -14,7 +14,7 @@ function LoginForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const url = `http://localhost:5000/api/${formType}`;
+    const url = `${process.env.NEXT_PUBLIC_API_URL}/api/${formType}`;
 
     try {
       const payload = formType === "login"
